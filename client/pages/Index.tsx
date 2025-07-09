@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
+import React, { useEffect, useRef, useState, lazy } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -256,7 +256,7 @@ export default function Portfolio() {
       { name: "AWS", level: 70, color: "cyber-orange", icon: "☁️" },
       { name: "Git", level: 90, color: "cyber-green", icon: "📝" },
       { name: "GitHub", level: 90, color: "cyber-purple", icon: "��" },
-      { name: "Jupyter", level: 85, color: "cyber-blue", icon: "📓" },
+      { name: "Jupyter", level: 85, color: "cyber-blue", icon: "����" },
       { name: "VS Code", level: 92, color: "neon-blue", icon: "💻" },
     ],
     Others: [
