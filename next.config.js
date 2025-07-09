@@ -5,9 +5,6 @@ const nextConfig = {
   images: {
     domains: ["cdn.builder.io"],
   },
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 module.exports = nextConfig;
