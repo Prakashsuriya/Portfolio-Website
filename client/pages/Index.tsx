@@ -592,7 +592,7 @@ export default function Portfolio() {
               <div className="relative w-full h-80 sm:h-96 lg:h-[500px] flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-pink/20 rounded-full blur-3xl animate-pulse-glow"></div>
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
-                                    <motion.div
+                  <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{
                       duration: 4,
@@ -604,12 +604,24 @@ export default function Portfolio() {
                     {/* Animated border rings */}
                     <motion.div
                       animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                       className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full border-2 border-cyber-blue/30"
                     />
                     <motion.div
-                      animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.6, 0.3] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      animate={{
+                        scale: [1.1, 1, 1.1],
+                        opacity: [0.3, 0.6, 0.3],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: 0.5,
+                      }}
                       className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full border border-cyber-purple/20"
                     />
 
@@ -622,36 +634,51 @@ export default function Portfolio() {
                           transition={{ duration: 0.3 }}
                           className="w-full h-full object-cover rounded-full"
                         />
-                                              {/* Floating particles */}
+                        {/* Floating particles */}
                         <motion.div
                           animate={{
                             x: [0, 20, 0],
                             y: [0, -15, 0],
-                            opacity: [0.4, 0.8, 0.4]
+                            opacity: [0.4, 0.8, 0.4],
                           }}
-                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
                           className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyber-blue rounded-full"
                         />
                         <motion.div
                           animate={{
                             x: [0, -15, 0],
                             y: [0, 20, 0],
-                            opacity: [0.4, 0.8, 0.4]
+                            opacity: [0.4, 0.8, 0.4],
                           }}
-                          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                          transition={{
+                            duration: 3.5,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 1,
+                          }}
                           className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyber-purple rounded-full"
                         />
                         <motion.div
                           animate={{
                             x: [0, 10, 0],
                             y: [0, -25, 0],
-                            opacity: [0.3, 0.7, 0.3]
+                            opacity: [0.3, 0.7, 0.3],
                           }}
-                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.5,
+                          }}
                           className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-cyber-pink rounded-full"
                         />
                         {/* Subtle glowing overlay */}
                         <div className="absolute inset-0 rounded-full bg-gradient-to-t from-cyber-blue/10 via-transparent to-cyber-purple/10" />
+                      </div>
                     </div>
                   </motion.div>
                 </div>
