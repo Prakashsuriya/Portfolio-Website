@@ -48,7 +48,15 @@ function AnimatedSphere() {
 }
 
 // Typing Animation Component
-function TypingText({ text, className, delay = 0 }) {
+function TypingText({
+  text,
+  className = "",
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+}) {
   const [displayText, setDisplayText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
