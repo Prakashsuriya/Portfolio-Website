@@ -1566,13 +1566,15 @@ export default function Portfolio() {
               animate={contactInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink text-white hover:scale-105 transition-transform w-full sm:w-auto px-8 py-4"
-              >
-                <Mail className="w-5 h-5 mr-2" />
-                Start a Conversation
-              </Button>
+              <a href="mailto:prakashranjanr8@gmail.com">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink text-white hover:scale-105 transition-transform w-full sm:w-auto px-8 py-4"
+                >
+                  <Mail className="w-5 h-5 mr-2" />
+                  Start a Conversation
+                </Button>
+              </a>
             </motion.div>
           </div>
         </div>
