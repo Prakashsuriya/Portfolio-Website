@@ -224,7 +224,7 @@ export default function Portfolio() {
       { name: "Git", level: 90, color: "cyber-green", icon: "📝" },
       { name: "GitHub", level: 90, color: "cyber-purple", icon: "🐙" },
       { name: "Jupyter", level: 85, color: "cyber-blue", icon: "📓" },
-      { name: "VS Code", level: 92, color: "neon-blue", icon: "💻" },
+      { name: "VS Code", level: 92, color: "neon-blue", icon: "����" },
     ],
     Others: [
       { name: "OpenCV", level: 85, color: "cyber-pink", icon: "👁️" },
@@ -309,20 +309,26 @@ export default function Portfolio() {
                 Home
               </a>
               <a
-                href="#projects"
+                href="#experience"
                 className="hover:text-cyber-purple transition-colors"
+              >
+                Experience
+              </a>
+              <a
+                href="#projects"
+                className="hover:text-cyber-pink transition-colors"
               >
                 Projects
               </a>
               <a
                 href="#skills"
-                className="hover:text-cyber-pink transition-colors"
+                className="hover:text-cyber-green transition-colors"
               >
                 Skills
               </a>
               <a
                 href="#contact"
-                className="hover:text-cyber-green transition-colors"
+                className="hover:text-cyber-orange transition-colors"
               >
                 Contact
               </a>
