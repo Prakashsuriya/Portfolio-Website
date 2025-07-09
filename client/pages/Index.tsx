@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense, lazy } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,6 +20,24 @@ import {
   Menu,
   X,
 } from "lucide-react";
+
+// Lazy load heavy 3D components
+const Canvas = lazy(() =>
+  import("@react-three/fiber").then((module) => ({ default: module.Canvas })),
+);
+const OrbitControls = lazy(() =>
+  import("@react-three/drei").then((module) => ({
+    default: module.OrbitControls,
+  })),
+);
+const Sphere = lazy(() =>
+  import("@react-three/drei").then((module) => ({ default: module.Sphere })),
+);
+const MeshDistortMaterial = lazy(() =>
+  import("@react-three/drei").then((module) => ({
+    default: module.MeshDistortMaterial,
+  })),
+);
 
 // 3D Sphere Component
 function AnimatedSphere() {
@@ -252,7 +268,7 @@ export default function Portfolio() {
     Programming: [
       { name: "Python 3", level: 95, color: "cyber-blue", icon: "🐍" },
       { name: "JavaScript", level: 88, color: "cyber-orange", icon: "⚡" },
-      { name: "Embedded C", level: 82, color: "cyber-green", icon: "���️" },
+      { name: "Embedded C", level: 82, color: "cyber-green", icon: "�����️" },
       { name: "C++", level: 80, color: "cyber-purple", icon: "🔧" },
     ],
     "ML Frameworks": [
@@ -268,7 +284,7 @@ export default function Portfolio() {
     "Data Handling": [
       { name: "Pandas", level: 90, color: "cyber-blue", icon: "🐼" },
       { name: "NumPy", level: 88, color: "cyber-purple", icon: "🔢" },
-      { name: "SQL", level: 85, color: "cyber-green", icon: "���️" },
+      { name: "SQL", level: 85, color: "cyber-green", icon: "🗄️" },
       { name: "Polaris", level: 75, color: "cyber-orange", icon: "⭐" },
     ],
     "APIs & Deployment": [
