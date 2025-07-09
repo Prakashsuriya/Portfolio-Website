@@ -424,8 +424,15 @@ export default function Portfolio() {
                   Skills
                 </a>
                 <a
-                  href="#contact"
+                  href="#socialworks"
                   className="hover:text-cyber-orange transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Socialworks
+                </a>
+                <a
+                  href="#contact"
+                  className="hover:text-neon-blue transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
