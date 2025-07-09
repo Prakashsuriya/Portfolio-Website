@@ -1246,6 +1246,154 @@ export default function Portfolio() {
                 </CardContent>
               </Card>
             </FloatingCard>
+
+            <FloatingCard delay={0.4}>
+              <Card className="glass border-white/10 group hover:glow-purple transition-all duration-300">
+                <CardContent className="p-8 lg:p-12">
+                  <div className="flex items-center space-x-6 mb-8">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-4 rounded-full bg-gradient-to-r from-cyber-purple to-cyber-pink shadow-lg"
+                    >
+                      <svg
+                        className="w-8 h-8 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
+                        <path d="M6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
+                      </svg>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
+                          SGC (Students Guidance Cell)
+                        </h3>
+                        <div className="flex flex-col lg:flex-row gap-2 mt-2 lg:mt-0">
+                          <Badge
+                            variant="secondary"
+                            className="bg-cyber-purple/20 text-cyber-purple border-cyber-purple/30 w-fit"
+                          >
+                            Core Member: 2021 - 2024
+                          </Badge>
+                          <Badge
+                            variant="secondary"
+                            className="bg-cyber-pink/20 text-cyber-pink border-cyber-pink/30 w-fit"
+                          >
+                            Technical Head: 2023 - 2024
+                          </Badge>
+                        </div>
+                      </div>
+                      <p className="text-lg text-cyber-purple font-semibold">
+                        Technical Leadership & Mentorship
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-cyber-blue mb-4">
+                        Key Contributions
+                      </h4>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.6 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-2 h-2 bg-cyber-purple rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-muted-foreground leading-relaxed">
+                          Conducted 10+ workshops on various technical topics
+                          and programming languages
+                        </p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.7 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-2 h-2 bg-cyber-purple rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-muted-foreground leading-relaxed">
+                          Organized 3 major symposiums with technical
+                          competitions and events
+                        </p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.8 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-2 h-2 bg-cyber-purple rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-muted-foreground leading-relaxed">
+                          Helped club members enhance their technical skills
+                          through mentorship and guidance
+                        </p>
+                      </motion.div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-cyber-pink mb-4">
+                        Impact & Leadership
+                      </h4>
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.9 }}
+                        className="flex items-center space-x-4 p-4 bg-dark-secondary/50 rounded-lg"
+                      >
+                        <div className="text-3xl font-bold text-cyber-purple">
+                          10+
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">
+                            Workshops
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Conducted
+                          </p>
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 1.0 }}
+                        className="flex items-center space-x-4 p-4 bg-dark-secondary/50 rounded-lg"
+                      >
+                        <div className="text-3xl font-bold text-cyber-pink">
+                          3
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">
+                            Symposiums
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Organized
+                          </p>
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 1.1 }}
+                        className="flex items-center space-x-4 p-4 bg-dark-secondary/50 rounded-lg"
+                      >
+                        <div className="text-3xl font-bold text-cyber-blue">
+                          3+
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">Years</p>
+                          <p className="text-xs text-muted-foreground">
+                            Active Service
+                          </p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </FloatingCard>
           </div>
         </div>
       </section>
