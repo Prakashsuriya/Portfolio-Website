@@ -1043,73 +1043,57 @@ export default function Portfolio() {
               ([category, skills], categoryIndex) => (
                 <motion.div
                   key={category}
-                  initial={{ opacity: 0, y: 50 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={skillsInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-                  className="space-y-6"
+                  transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                  className="space-y-4"
                 >
-                  <h3 className="text-2xl lg:text-3xl font-bold text-center gradient-text">
+                  <h3 className="text-xl lg:text-2xl font-bold text-center gradient-text mb-6">
                     {category}
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                  <div className="flex flex-wrap justify-center gap-3">
                     {skills.map((skill, skillIndex) => {
                       const globalIndex = categoryIndex * 10 + skillIndex;
                       return (
-                        <FloatingCard
+                        <motion.div
                           key={skillIndex}
-                          delay={globalIndex * 0.05}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={skillsInView ? { opacity: 1, scale: 1 } : {}}
+                          transition={{
+                            duration: 0.4,
+                            delay: globalIndex * 0.05,
+                            type: "spring",
+                            bounce: 0.4,
+                          }}
+                          whileHover={{
+                            scale: 1.1,
+                            rotate: [0, -5, 5, 0],
+                            transition: { duration: 0.3 },
+                          }}
+                          className="group cursor-pointer"
                         >
-                          <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:scale-105 hover:glow-blue transition-all duration-300">
-                            <CardContent className="p-0">
-                              <motion.div
-                                className="text-3xl lg:text-4xl mb-3"
-                                whileHover={{ scale: 1.2, rotate: 10 }}
-                                transition={{ duration: 0.3 }}
-                              >
-                                {skill.icon}
-                              </motion.div>
-                              <h4 className="text-sm lg:text-base font-semibold mb-3 lg:mb-4">
-                                {skill.name}
-                              </h4>
-                              <div className="relative">
-                                <div className="w-full bg-dark-secondary rounded-full h-2 lg:h-3 mb-2">
-                                  <motion.div
-                                    className={`bg-gradient-to-r from-${skill.color} to-neon-blue h-full rounded-full relative overflow-hidden`}
-                                    initial={{ width: 0 }}
-                                    animate={
-                                      skillsInView
-                                        ? { width: `${skill.level}%` }
-                                        : {}
-                                    }
-                                    transition={{
-                                      duration: 1.5,
-                                      delay: globalIndex * 0.05,
-                                      ease: "easeOut",
-                                    }}
-                                  >
-                                    <motion.div
-                                      className="absolute inset-0 bg-white/20"
-                                      animate={{ x: ["-100%", "100%"] }}
-                                      transition={{
-                                        duration: 2,
-                                        repeat: Infinity,
-                                        ease: "linear",
-                                      }}
-                                    />
-                                  </motion.div>
-                                </div>
-                                <motion.span
-                                  className="text-xs lg:text-sm text-muted-foreground font-medium"
-                                  initial={{ opacity: 0 }}
-                                  animate={skillsInView ? { opacity: 1 } : {}}
-                                  transition={{ delay: globalIndex * 0.05 + 1 }}
-                                >
-                                  {skill.level}%
-                                </motion.span>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </FloatingCard>
+                          <div
+                            className={`px-3 py-2 rounded-full glass border border-white/20 hover:border-${skill.color}/60 transition-all duration-300 flex items-center space-x-2 hover:glow-blue`}
+                          >
+                            <motion.span
+                              className="text-base"
+                              animate={{
+                                rotate: [0, 10, -10, 0],
+                              }}
+                              transition={{
+                                duration: 3,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                                delay: globalIndex * 0.1,
+                              }}
+                            >
+                              {skill.icon}
+                            </motion.span>
+                            <span className="text-sm font-medium text-foreground group-hover:text-cyber-blue transition-colors">
+                              {skill.name}
+                            </span>
+                          </div>
+                        </motion.div>
                       );
                     })}
                   </div>
