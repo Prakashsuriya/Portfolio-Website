@@ -236,25 +236,30 @@ export default function Portfolio() {
 
   const experience = [
     {
-      title: "AI/ML Engineer",
-      company: "Tech Innovation Hub",
-      period: "2023 - Present",
-      description:
-        "Leading AI/ML projects, developing cutting-edge solutions using PyTorch and TensorFlow.",
+      title: "Application Development Intern",
+      company: "Zulu Defence Systems Pvt. Ltd.",
+      period: "May 2024 – July 2024",
+      location: "Remote",
+      description: [
+        "Developed a hybrid AI system using Ardupilot, Embedded C, and Python on Raspberry Pi for simulation and defense applications.",
+        "Integrated sensor modules (VL6180X) with ML inference pipelines for real-time control and feedback.",
+        "Worked with Jetson Nano & JetPack 6.0 for edge AI deployments.",
+      ],
+      color: "from-cyber-blue to-cyber-purple",
+      icon: <Cpu className="w-6 h-6" />,
     },
     {
-      title: "Machine Learning Developer",
-      company: "DataTech Solutions",
-      period: "2022 - 2023",
-      description:
-        "Built predictive models and automated ML pipelines for enterprise clients.",
-    },
-    {
-      title: "Python Developer",
-      company: "Code Dynamics",
-      period: "2021 - 2022",
-      description:
-        "Developed robust backend systems and implemented AI-powered features.",
+      title: "Java Fullstack Developer Intern",
+      company: "Alphabit Technologies",
+      period: "Jan 2024 – Mar 2024",
+      location: "Chennai, India",
+      description: [
+        "Built full-stack AI-driven e-commerce platform using Spring Boot (backend) and ReactJS (frontend).",
+        "Designed reusable ML modules and REST APIs with FastAPI.",
+        "Integrated SQL Server for backend analytics and user data modeling.",
+      ],
+      color: "from-cyber-purple to-cyber-pink",
+      icon: <Code className="w-6 h-6" />,
     },
   ];
 
