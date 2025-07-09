@@ -1,5 +1,5 @@
-import Index from "./Index";
+import Portfolio from "./Portfolio";
 
 export default function Home() {
-  return <Index />;
+  return <Portfolio />;
 }
