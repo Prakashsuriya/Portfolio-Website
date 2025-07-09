@@ -194,7 +194,30 @@ export default function Portfolio() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-hidden relative">
+      {/* Floating Background Elements */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <motion.div
+          style={{ y: yBackground, rotate: rotateZ }}
+          className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyber-blue/10 to-cyber-purple/10 rounded-full blur-xl"
+        />
+        <motion.div
+          style={{ y: yBackground, rotate: rotateZ }}
+          className="absolute top-40 right-20 w-24 h-24 bg-gradient-to-r from-cyber-pink/10 to-cyber-green/10 rounded-full blur-xl"
+        />
+        <motion.div
+          style={{ y: yGrid }}
+          className="absolute bottom-20 left-1/4 w-40 h-40 bg-gradient-to-r from-cyber-green/5 to-cyber-orange/5 rounded-full blur-2xl"
+        />
+        <motion.div
+          style={{ y: yGrid, scale }}
+          className="absolute top-1/2 right-10 w-16 h-16 border border-cyber-blue/20 rounded-lg rotate-45"
+        />
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute bottom-40 right-1/3 w-20 h-20 border border-cyber-purple/20 rounded-full"
+        />
+      </div>
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-background/80 border-b border-white/10">
         <div className="container mx-auto px-6 py-4">
