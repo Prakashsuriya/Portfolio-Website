@@ -864,7 +864,7 @@ export default function Portfolio() {
                           <Badge
                             key={techIndex}
                             variant="secondary"
-                            className="bg-dark-secondary text-xs lg:text-sm hover:bg-cyber-blue/20 transition-colors"
+                            className="bg-dark-secondary"
                           >
                             {tech}
                           </Badge>
