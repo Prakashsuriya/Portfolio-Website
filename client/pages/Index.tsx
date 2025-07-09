@@ -691,13 +691,7 @@ export default function Portfolio() {
 
                     <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-purple p-1 animate-glow">
                       <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center relative overflow-hidden">
-                        <motion.img
-                          src="https://cdn.builder.io/api/v1/image/assets%2F8f78a356a05540998176ea24bafbe59e%2Fe65fd045fa2647879a8958d38ff15b33?format=webp&width=800"
-                          alt="Prakash K - AI/ML Engineer"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.3 }}
-                          className="w-full h-full object-cover rounded-full"
-                        />
+                        <AlternatingPhotos />
                         {/* Floating particles */}
                         <motion.div
                           animate={{
