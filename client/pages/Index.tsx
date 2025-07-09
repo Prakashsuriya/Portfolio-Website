@@ -560,17 +560,7 @@ export default function Portfolio() {
           style={{ y, scale }}
           className="absolute inset-0 z-0 hidden lg:block"
         >
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <pointLight position={[10, 10, 10]} />
-            <AnimatedSphere />
-            <OrbitControls
-              enableZoom={false}
-              enablePan={false}
-              autoRotate
-              autoRotateSpeed={0.5}
-            />
-          </Canvas>
+          <ThreeDScene />
         </motion.div>
 
         {/* Mobile-friendly background effect */}
