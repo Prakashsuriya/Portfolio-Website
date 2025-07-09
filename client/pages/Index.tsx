@@ -439,12 +439,12 @@ export default function Portfolio() {
                 </motion.h1>
 
                 <motion.h2
-                  className="text-xl sm:text-2xl lg:text-4xl text-cyber-blue font-semibold"
+                  className="text-xl sm:text-2xl lg:text-4xl font-semibold"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.5 }}
                 >
-                  AI/ML Engineer
+                  <RotatingRole />
                 </motion.h2>
 
                 <motion.p
