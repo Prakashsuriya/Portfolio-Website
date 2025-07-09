@@ -339,15 +339,50 @@ export default function Portfolio() {
       <section
         id="home"
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center cyber-grid"
+        className="relative min-h-screen flex items-center justify-center cyber-grid overflow-hidden"
       >
-        <motion.div style={{ y }} className="absolute inset-0 z-0">
+        {/* Animated Grid Background */}
+        <motion.div
+          style={{ y: yGrid }}
+          className="absolute inset-0 cyber-grid opacity-30"
+        />
+
+        {/* 3D Canvas */}
+        <motion.div
+          style={{ y, scale }}
+          className="absolute inset-0 z-0 hidden lg:block"
+        >
           <Canvas camera={{ position: [0, 0, 5] }}>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} />
             <AnimatedSphere />
-            <OrbitControls enableZoom={false} enablePan={false} />
+            <OrbitControls
+              enableZoom={false}
+              enablePan={false}
+              autoRotate
+              autoRotateSpeed={0.5}
+            />
           </Canvas>
+        </motion.div>
+
+        {/* Mobile-friendly background effect */}
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute inset-0 z-0 lg:hidden flex items-center justify-center"
+        >
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="w-96 h-96 border border-cyber-blue/20 rounded-full"
+          >
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="w-full h-full border border-cyber-purple/20 rounded-full relative"
+            >
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-cyber-blue/10 to-cyber-purple/10 rounded-full blur-3xl" />
+            </motion.div>
+          </motion.div>
         </motion.div>
 
         <div className="container mx-auto px-6 z-10 relative">
