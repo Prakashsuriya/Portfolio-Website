@@ -720,52 +720,84 @@ export default function Portfolio() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-            {skills.map((skill, index) => (
-              <FloatingCard key={index} delay={index * 0.1}>
-                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:scale-105 hover:glow-blue transition-all duration-300">
-                  <CardContent className="p-0">
-                    <h3 className="text-lg lg:text-xl font-semibold mb-3 lg:mb-4">
-                      {skill.name}
-                    </h3>
-                    <div className="relative">
-                      <div className="w-full bg-dark-secondary rounded-full h-2 lg:h-3 mb-2">
-                        <motion.div
-                          className={`bg-gradient-to-r from-${skill.color} to-neon-blue h-full rounded-full relative overflow-hidden`}
-                          initial={{ width: 0 }}
-                          animate={
-                            skillsInView ? { width: `${skill.level}%` } : {}
-                          }
-                          transition={{
-                            duration: 1.5,
-                            delay: index * 0.1,
-                            ease: "easeOut",
-                          }}
+          <div className="space-y-8 lg:space-y-12">
+            {Object.entries(skillsData).map(
+              ([category, skills], categoryIndex) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={skillsInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
+                  className="space-y-6"
+                >
+                  <h3 className="text-2xl lg:text-3xl font-bold text-center gradient-text">
+                    {category}
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                    {skills.map((skill, skillIndex) => {
+                      const globalIndex = categoryIndex * 10 + skillIndex;
+                      return (
+                        <FloatingCard
+                          key={skillIndex}
+                          delay={globalIndex * 0.05}
                         >
-                          <motion.div
-                            className="absolute inset-0 bg-white/20"
-                            animate={{ x: ["-100%", "100%"] }}
-                            transition={{
-                              duration: 2,
-                              repeat: Infinity,
-                              ease: "linear",
-                            }}
-                          />
-                        </motion.div>
-                      </div>
-                      <motion.span
-                        className="text-sm text-muted-foreground font-medium"
-                        initial={{ opacity: 0 }}
-                        animate={skillsInView ? { opacity: 1 } : {}}
-                        transition={{ delay: index * 0.1 + 1 }}
-                      >
-                        {skill.level}%
-                      </motion.span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </FloatingCard>
-            ))}
+                          <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:scale-105 hover:glow-blue transition-all duration-300">
+                            <CardContent className="p-0">
+                              <motion.div
+                                className="text-3xl lg:text-4xl mb-3"
+                                whileHover={{ scale: 1.2, rotate: 10 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                {skill.icon}
+                              </motion.div>
+                              <h4 className="text-sm lg:text-base font-semibold mb-3 lg:mb-4">
+                                {skill.name}
+                              </h4>
+                              <div className="relative">
+                                <div className="w-full bg-dark-secondary rounded-full h-2 lg:h-3 mb-2">
+                                  <motion.div
+                                    className={`bg-gradient-to-r from-${skill.color} to-neon-blue h-full rounded-full relative overflow-hidden`}
+                                    initial={{ width: 0 }}
+                                    animate={
+                                      skillsInView
+                                        ? { width: `${skill.level}%` }
+                                        : {}
+                                    }
+                                    transition={{
+                                      duration: 1.5,
+                                      delay: globalIndex * 0.05,
+                                      ease: "easeOut",
+                                    }}
+                                  >
+                                    <motion.div
+                                      className="absolute inset-0 bg-white/20"
+                                      animate={{ x: ["-100%", "100%"] }}
+                                      transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "linear",
+                                      }}
+                                    />
+                                  </motion.div>
+                                </div>
+                                <motion.span
+                                  className="text-xs lg:text-sm text-muted-foreground font-medium"
+                                  initial={{ opacity: 0 }}
+                                  animate={skillsInView ? { opacity: 1 } : {}}
+                                  transition={{ delay: globalIndex * 0.05 + 1 }}
+                                >
+                                  {skill.level}%
+                                </motion.span>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </FloatingCard>
+                      );
+                    })}
+                  </div>
+                </motion.div>
+              ),
+            )}
           </div>
         </div>
       </section>
