@@ -89,6 +89,7 @@ function FloatingCard({ children, className, delay = 0 }) {
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
