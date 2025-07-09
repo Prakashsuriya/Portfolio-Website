@@ -190,16 +190,47 @@ export default function Portfolio() {
     },
   ];
 
-  const skills = [
-    { name: "Python", level: 95, color: "cyber-blue" },
-    { name: "Machine Learning", level: 90, color: "cyber-purple" },
-    { name: "PyTorch", level: 85, color: "cyber-pink" },
-    { name: "TensorFlow", level: 85, color: "cyber-green" },
-    { name: "NLP", level: 88, color: "cyber-orange" },
-    { name: "OpenAI GPT", level: 92, color: "neon-blue" },
-    { name: "Computer Vision", level: 80, color: "neon-purple" },
-    { name: "Deep Learning", level: 87, color: "neon-pink" },
-  ];
+  const skillsData = {
+    Programming: [
+      { name: "Python 3", level: 95, color: "cyber-blue", icon: "🐍" },
+      { name: "JavaScript", level: 88, color: "cyber-orange", icon: "⚡" },
+      { name: "Embedded C", level: 82, color: "cyber-green", icon: "⚙️" },
+      { name: "C++", level: 80, color: "cyber-purple", icon: "🔧" },
+    ],
+    "ML Frameworks": [
+      { name: "PyTorch", level: 90, color: "cyber-pink", icon: "🔥" },
+      { name: "TensorFlow", level: 88, color: "cyber-blue", icon: "🧠" },
+      { name: "Scikit-learn", level: 85, color: "cyber-green", icon: "📊" },
+    ],
+    "NLP/GenAI": [
+      { name: "Transformers", level: 88, color: "neon-blue", icon: "🤖" },
+      { name: "OpenAI GPT-3.5", level: 92, color: "neon-purple", icon: "🧠" },
+      { name: "Google GenAI", level: 85, color: "neon-pink", icon: "🎯" },
+    ],
+    "Data Handling": [
+      { name: "Pandas", level: 90, color: "cyber-blue", icon: "🐼" },
+      { name: "NumPy", level: 88, color: "cyber-purple", icon: "🔢" },
+      { name: "SQL", level: 85, color: "cyber-green", icon: "🗄️" },
+      { name: "Polaris", level: 75, color: "cyber-orange", icon: "⭐" },
+    ],
+    "APIs & Deployment": [
+      { name: "REST APIs", level: 88, color: "neon-green", icon: "🌐" },
+      { name: "Docker", level: 82, color: "neon-blue", icon: "🐳" },
+    ],
+    "Cloud & Tools": [
+      { name: "AWS", level: 70, color: "cyber-orange", icon: "☁️" },
+      { name: "Git", level: 90, color: "cyber-green", icon: "📝" },
+      { name: "GitHub", level: 90, color: "cyber-purple", icon: "🐙" },
+      { name: "Jupyter", level: 85, color: "cyber-blue", icon: "📓" },
+      { name: "VS Code", level: 92, color: "neon-blue", icon: "💻" },
+    ],
+    Others: [
+      { name: "OpenCV", level: 85, color: "cyber-pink", icon: "👁️" },
+      { name: "Mediapipe", level: 80, color: "neon-pink", icon: "🎥" },
+      { name: "Raspberry Pi", level: 88, color: "cyber-green", icon: "🍓" },
+      { name: "NVIDIA Jetpack", level: 75, color: "neon-green", icon: "🚀" },
+    ],
+  };
 
   const experience = [
     {
