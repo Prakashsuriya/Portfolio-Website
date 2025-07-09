@@ -573,21 +573,24 @@ export default function Portfolio() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid gap-6 lg:gap-8 md:grid-cols-2">
             {projects.map((project, index) => (
               <FloatingCard key={index} delay={index * 0.2} className="h-full">
-                <Card className="glass border-white/10 h-full group hover:glow-blue transition-all duration-300">
-                  <CardContent className="p-8 h-full flex flex-col">
+                <Card className="glass border-white/10 h-full group hover:glow-blue transition-all duration-300 transform hover:scale-105">
+                  <CardContent className="p-6 lg:p-8 h-full flex flex-col">
                     <div className="flex items-center space-x-4 mb-6">
-                      <div
-                        className={`p-3 rounded-full bg-gradient-to-r ${project.color}`}
+                      <motion.div
+                        whileHover={{ scale: 1.1, rotate: 5 }}
+                        className={`p-3 rounded-full bg-gradient-to-r ${project.color} shadow-lg`}
                       >
                         {project.icon}
-                      </div>
-                      <h3 className="text-2xl font-bold">{project.title}</h3>
+                      </motion.div>
+                      <h3 className="text-xl lg:text-2xl font-bold">
+                        {project.title}
+                      </h3>
                     </div>
 
-                    <p className="text-muted-foreground mb-6 flex-grow">
+                    <p className="text-muted-foreground mb-6 flex-grow text-sm lg:text-base leading-relaxed">
                       {project.description}
                     </p>
 
@@ -597,7 +600,7 @@ export default function Portfolio() {
                           <Badge
                             key={techIndex}
                             variant="secondary"
-                            className="bg-dark-secondary"
+                            className="bg-dark-secondary text-xs lg:text-sm hover:bg-cyber-blue/20 transition-colors"
                           >
                             {tech}
                           </Badge>
@@ -606,7 +609,8 @@ export default function Portfolio() {
 
                       <Button
                         variant="outline"
-                        className="w-full border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
+                        size="lg"
+                        className="w-full border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black transform hover:scale-105 transition-all"
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         View Project
