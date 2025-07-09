@@ -215,7 +215,7 @@ export default function Portfolio() {
     Programming: [
       { name: "Python 3", level: 95, color: "cyber-blue", icon: "🐍" },
       { name: "JavaScript", level: 88, color: "cyber-orange", icon: "⚡" },
-      { name: "Embedded C", level: 82, color: "cyber-green", icon: "⚙️" },
+      { name: "Embedded C", level: 82, color: "cyber-green", icon: "���️" },
       { name: "C++", level: 80, color: "cyber-purple", icon: "🔧" },
     ],
     "ML Frameworks": [
@@ -622,30 +622,36 @@ export default function Portfolio() {
                           transition={{ duration: 0.3 }}
                           className="w-full h-full object-cover rounded-full"
                         />
-                      {/* Floating particles */}
-                      <motion.div
-                        animate={{
-                          y: [-10, 10, -10],
-                          opacity: [0.3, 0.8, 0.3],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyber-blue rounded-full"
-                      />
-                      <motion.div
-                        animate={{ y: [10, -10, 10], opacity: [0.3, 0.8, 0.3] }}
-                        transition={{
-                          duration: 2.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyber-purple rounded-full"
-                      />
-                      {/* Glowing overlay */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-cyber-blue/20 via-transparent to-cyber-purple/20" />
+                                              {/* Floating particles */}
+                        <motion.div
+                          animate={{
+                            x: [0, 20, 0],
+                            y: [0, -15, 0],
+                            opacity: [0.4, 0.8, 0.4]
+                          }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyber-blue rounded-full"
+                        />
+                        <motion.div
+                          animate={{
+                            x: [0, -15, 0],
+                            y: [0, 20, 0],
+                            opacity: [0.4, 0.8, 0.4]
+                          }}
+                          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                          className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyber-purple rounded-full"
+                        />
+                        <motion.div
+                          animate={{
+                            x: [0, 10, 0],
+                            y: [0, -25, 0],
+                            opacity: [0.3, 0.7, 0.3]
+                          }}
+                          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                          className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-cyber-pink rounded-full"
+                        />
+                        {/* Subtle glowing overlay */}
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-cyber-blue/10 via-transparent to-cyber-purple/10" />
                     </div>
                   </motion.div>
                 </div>
