@@ -871,6 +871,100 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Project Highlights Section */}
+      <section className="py-16 lg:py-20 relative bg-dark-surface/20">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={projectsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
+              Project Highlights
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Notable achievements and innovative solutions
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 lg:gap-8">
+            <FloatingCard delay={0.2}>
+              <Card className="glass border-white/10 p-6 lg:p-8 group hover:glow-purple transition-all duration-300 hover:scale-105">
+                <CardContent className="p-0">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-3 rounded-full bg-gradient-to-r from-cyber-purple to-cyber-pink shadow-lg"
+                    >
+                      <Zap className="w-6 h-6" />
+                    </motion.div>
+                    <h3 className="text-xl lg:text-2xl font-bold gradient-text">
+                      GenAI + n8n Automation
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Built no-code AI agents using n8n + OpenAI workflows for
+                    resume parsing, Telegram bots, and WhatsApp message
+                    automation.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      n8n
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      OpenAI
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      Automation
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      No-Code
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </FloatingCard>
+
+            <FloatingCard delay={0.4}>
+              <Card className="glass border-white/10 p-6 lg:p-8 group hover:glow-green transition-all duration-300 hover:scale-105">
+                <CardContent className="p-0">
+                  <div className="flex items-center space-x-4 mb-6">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-3 rounded-full bg-gradient-to-r from-cyber-green to-cyber-orange shadow-lg"
+                    >
+                      <Cpu className="w-6 h-6" />
+                    </motion.div>
+                    <h3 className="text-xl lg:text-2xl font-bold gradient-text">
+                      Mobile-Controlled Drone Navigation
+                    </h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Simulated UAV flight control using MAVProxy, Mavlink, and
+                    custom AI models for advanced drone navigation systems.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      MAVProxy
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      Mavlink
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      AI Models
+                    </Badge>
+                    <Badge variant="secondary" className="bg-dark-secondary">
+                      UAV
+                    </Badge>
+                  </div>
+                </CardContent>
+              </Card>
+            </FloatingCard>
+          </div>
+        </div>
+      </section>
+
       {/* Skills Section */}
       <section
         id="skills"
