@@ -829,14 +829,39 @@ export default function Portfolio() {
                         ))}
                       </div>
 
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        className="w-full border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black transform hover:scale-105 transition-all"
-                      >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Project
-                      </Button>
+                      <div className="flex gap-3">
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1"
+                        >
+                          <Button
+                            variant="outline"
+                            size="lg"
+                            className="w-full border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black transform hover:scale-105 transition-all"
+                          >
+                            <Github className="w-4 h-4 mr-2" />
+                            GitHub
+                          </Button>
+                        </a>
+                        {project.demo && (
+                          <a
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1"
+                          >
+                            <Button
+                              size="lg"
+                              className="w-full bg-gradient-to-r from-cyber-purple to-cyber-pink text-white hover:scale-105 transition-all"
+                            >
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Live Demo
+                            </Button>
+                          </a>
+                        )}
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
