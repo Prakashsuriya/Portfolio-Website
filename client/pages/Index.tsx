@@ -256,7 +256,7 @@ export default function Portfolio() {
       { name: "AWS", level: 70, color: "cyber-orange", icon: "☁️" },
       { name: "Git", level: 90, color: "cyber-green", icon: "📝" },
       { name: "GitHub", level: 90, color: "cyber-purple", icon: "��" },
-      { name: "Jupyter", level: 85, color: "cyber-blue", icon: "����" },
+      { name: "Jupyter", level: 85, color: "cyber-blue", icon: "📓" },
       { name: "VS Code", level: 92, color: "neon-blue", icon: "💻" },
     ],
     Others: [
@@ -495,7 +495,15 @@ export default function Portfolio() {
           style={{ y, scale }}
           className="absolute inset-0 z-0 hidden lg:block"
         >
-          <ThreeDScene />
+          <React.Suspense
+            fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="w-32 h-32 border-4 border-cyber-blue/20 border-t-cyber-blue rounded-full animate-spin"></div>
+              </div>
+            }
+          >
+            <ThreeDScene />
+          </React.Suspense>
         </motion.div>
 
         {/* Mobile-friendly background effect */}
