@@ -826,12 +826,46 @@ export default function Portfolio() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-white/10">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-muted-foreground">
+      <footer className="py-6 lg:py-8 border-t border-white/10 bg-dark-surface/30">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <motion.p
+            className="text-muted-foreground text-sm lg:text-base"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
             © 2024 Prakash K. Crafted with cutting-edge tech and futuristic
             design.
-          </p>
+          </motion.p>
+          <motion.div
+            className="flex justify-center space-x-6 mt-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <a
+              href="https://github.com/Prakashsuriya"
+              className="text-muted-foreground hover:text-cyber-blue transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/prakashkbtech/"
+              className="text-muted-foreground hover:text-cyber-purple transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:prakashranjanr8@gmail.com"
+              className="text-muted-foreground hover:text-cyber-pink transition-colors"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+          </motion.div>
         </div>
       </footer>
     </div>
