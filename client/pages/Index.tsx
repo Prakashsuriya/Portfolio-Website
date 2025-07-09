@@ -39,11 +39,12 @@ const MeshDistortMaterial = lazy(() =>
   })),
 );
 
-// 3D Sphere Component
+// 3D Sphere Component (will be dynamically imported)
 function AnimatedSphere() {
   const meshRef = useRef<any>();
+  const { useFrame } = require("@react-three/fiber");
 
-  useFrame((state) => {
+  useFrame((state: any) => {
     if (meshRef.current) {
       meshRef.current.rotation.x = state.clock.elapsedTime * 0.2;
       meshRef.current.rotation.y = state.clock.elapsedTime * 0.3;
@@ -60,6 +61,31 @@ function AnimatedSphere() {
         roughness={0.4}
       />
     </Sphere>
+  );
+}
+
+// 3D Scene Component with loading fallback
+function ThreeDScene() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-full flex items-center justify-center">
+          <div className="w-32 h-32 border-4 border-cyber-blue/30 border-t-cyber-blue rounded-full animate-spin"></div>
+        </div>
+      }
+    >
+      <Canvas camera={{ position: [0, 0, 5] }}>
+        <ambientLight intensity={0.5} />
+        <pointLight position={[10, 10, 10]} />
+        <AnimatedSphere />
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate
+          autoRotateSpeed={0.5}
+        />
+      </Canvas>
+    </Suspense>
   );
 }
 
@@ -268,7 +294,7 @@ export default function Portfolio() {
     Programming: [
       { name: "Python 3", level: 95, color: "cyber-blue", icon: "🐍" },
       { name: "JavaScript", level: 88, color: "cyber-orange", icon: "⚡" },
-      { name: "Embedded C", level: 82, color: "cyber-green", icon: "�����️" },
+      { name: "Embedded C", level: 82, color: "cyber-green", icon: "���️" },
       { name: "C++", level: 80, color: "cyber-purple", icon: "🔧" },
     ],
     "ML Frameworks": [
