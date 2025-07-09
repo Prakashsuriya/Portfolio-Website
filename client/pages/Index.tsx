@@ -385,29 +385,29 @@ export default function Portfolio() {
           </motion.div>
         </motion.div>
 
-        <div className="container mx-auto px-6 z-10 relative">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4 sm:px-6 z-10 relative">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={heroInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="space-y-6 lg:space-y-8 text-center lg:text-left"
             >
               <div className="space-y-4">
                 <motion.h1
-                  className="text-5xl lg:text-7xl font-bold leading-tight"
+                  className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.2 }}
                 >
                   Hi, I'm{" "}
-                  <span className="gradient-text">
+                  <span className="gradient-text block sm:inline">
                     <TypingText text="Prakash K" delay={1000} />
                   </span>
                 </motion.h1>
 
                 <motion.h2
-                  className="text-2xl lg:text-4xl text-cyber-blue font-semibold"
+                  className="text-xl sm:text-2xl lg:text-4xl text-cyber-blue font-semibold"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.5 }}
@@ -416,7 +416,7 @@ export default function Portfolio() {
                 </motion.h2>
 
                 <motion.p
-                  className="text-lg text-muted-foreground max-w-lg leading-relaxed"
+                  className="text-base sm:text-lg text-muted-foreground max-w-lg leading-relaxed mx-auto lg:mx-0"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 2 }}
