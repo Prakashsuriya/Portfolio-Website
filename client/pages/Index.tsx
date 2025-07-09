@@ -21,23 +21,8 @@ import {
   X,
 } from "lucide-react";
 
-// Lazy load heavy 3D components
-const Canvas = lazy(() =>
-  import("@react-three/fiber").then((module) => ({ default: module.Canvas })),
-);
-const OrbitControls = lazy(() =>
-  import("@react-three/drei").then((module) => ({
-    default: module.OrbitControls,
-  })),
-);
-const Sphere = lazy(() =>
-  import("@react-three/drei").then((module) => ({ default: module.Sphere })),
-);
-const MeshDistortMaterial = lazy(() =>
-  import("@react-three/drei").then((module) => ({
-    default: module.MeshDistortMaterial,
-  })),
-);
+// Lazy load the heavy 3D scene component
+const ThreeDScene = lazy(() => import("@/components/ThreeDScene"));
 
 // 3D Sphere Component (will be dynamically imported)
 function AnimatedSphere() {
