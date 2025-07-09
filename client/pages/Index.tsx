@@ -485,16 +485,56 @@ export default function Portfolio() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={heroInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
-              className="relative"
+              className="relative order-first lg:order-last"
             >
-              <div className="relative w-full h-96 lg:h-[500px]">
+              <div className="relative w-full h-80 sm:h-96 lg:h-[500px] flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-pink/20 rounded-full blur-3xl animate-pulse-glow"></div>
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-purple p-1 animate-glow">
-                    <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center">
-                      <div className="text-6xl lg:text-8xl">🤖</div>
+                  <motion.div
+                    animate={{ rotate: [0, 5, -5, 0] }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-purple p-1 animate-glow"
+                  >
+                    <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center relative overflow-hidden">
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{
+                          duration: 3,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="text-5xl sm:text-6xl lg:text-8xl"
+                      >
+                        🤖
+                      </motion.div>
+                      {/* Floating particles */}
+                      <motion.div
+                        animate={{
+                          y: [-10, 10, -10],
+                          opacity: [0.3, 0.8, 0.3],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyber-blue rounded-full"
+                      />
+                      <motion.div
+                        animate={{ y: [10, -10, 10], opacity: [0.3, 0.8, 0.3] }}
+                        transition={{
+                          duration: 2.5,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyber-purple rounded-full"
+                      />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
