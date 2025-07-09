@@ -592,27 +592,36 @@ export default function Portfolio() {
               <div className="relative w-full h-80 sm:h-96 lg:h-[500px] flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-pink/20 rounded-full blur-3xl animate-pulse-glow"></div>
                 <div className="relative z-10 w-full h-full flex items-center justify-center">
-                  <motion.div
-                    animate={{ rotate: [0, 5, -5, 0] }}
+                                    <motion.div
+                    animate={{ y: [0, -8, 0] }}
                     transition={{
                       duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-purple p-1 animate-glow"
+                    className="relative"
                   >
-                    <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center relative overflow-hidden">
-                      <motion.img
-                        src="https://cdn.builder.io/api/v1/image/assets%2F8f78a356a05540998176ea24bafbe59e%2Fe65fd045fa2647879a8958d38ff15b33?format=webp&width=800"
-                        alt="Prakash K - AI/ML Engineer"
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{
-                          duration: 3,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="w-full h-full object-cover rounded-full"
-                      />
+                    {/* Animated border rings */}
+                    <motion.div
+                      animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
+                      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full border-2 border-cyber-blue/30"
+                    />
+                    <motion.div
+                      animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.6, 0.3] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                      className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full border border-cyber-purple/20"
+                    />
+
+                    <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full bg-gradient-to-r from-cyber-blue to-cyber-purple p-1 animate-glow">
+                      <div className="w-full h-full rounded-full bg-dark-surface flex items-center justify-center relative overflow-hidden">
+                        <motion.img
+                          src="https://cdn.builder.io/api/v1/image/assets%2F8f78a356a05540998176ea24bafbe59e%2Fe65fd045fa2647879a8958d38ff15b33?format=webp&width=800"
+                          alt="Prakash K - AI/ML Engineer"
+                          whileHover={{ scale: 1.05 }}
+                          transition={{ duration: 0.3 }}
+                          className="w-full h-full object-cover rounded-full"
+                        />
                       {/* Floating particles */}
                       <motion.div
                         animate={{
