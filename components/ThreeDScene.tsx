@@ -1,12 +1,10 @@
 "use client";
 
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere } from "@react-three/drei";
-import { useRef } from "react";
+import { Suspense, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
+// Lightweight animated sphere component
 function AnimatedSphere() {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
@@ -21,85 +19,81 @@ function AnimatedSphere() {
     }
   });
 
-  const vertexShader = `
-    varying vec3 vPosition;
-    varying vec3 vNormal;
-    uniform float time;
-    
-    void main() {
-      vPosition = position;
-      vNormal = normal;
+  // Memoize shaders to prevent recreation
+  const shaders = useMemo(
+    () => ({
+      vertexShader: `
+      varying vec3 vPosition;
+      varying vec3 vNormal;
+      uniform float time;
       
-      vec3 pos = position;
-      float noise = sin(pos.x * 4.0 + time) * sin(pos.y * 4.0 + time) * 0.02;
-      pos += normal * noise;
+      void main() {
+        vPosition = position;
+        vNormal = normal;
+        
+        vec3 pos = position;
+        float noise = sin(pos.x * 2.0 + time) * sin(pos.y * 2.0 + time) * 0.01;
+        pos += normal * noise;
+        
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+      }
+    `,
+      fragmentShader: `
+      varying vec3 vPosition;
+      varying vec3 vNormal;
+      uniform float time;
       
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-    }
-  `;
-
-  const fragmentShader = `
-    varying vec3 vPosition;
-    varying vec3 vNormal;
-    uniform float time;
-    
-    void main() {
-      vec3 color1 = vec3(0.2, 0.6, 1.0); // Cyber blue
-      vec3 color2 = vec3(0.8, 0.2, 1.0); // Cyber purple
-      vec3 color3 = vec3(1.0, 0.3, 0.6); // Cyber pink
-      
-      float mixValue = sin(vPosition.x + time) * cos(vPosition.y + time) * 0.5 + 0.5;
-      vec3 finalColor = mix(mix(color1, color2, mixValue), color3, sin(time * 0.5) * 0.5 + 0.5);
-      
-      float fresnel = dot(vNormal, vec3(0.0, 0.0, 1.0));
-      fresnel = pow(1.0 - fresnel, 2.0);
-      
-      gl_FragColor = vec4(finalColor * (0.8 + fresnel * 0.4), 0.9);
-    }
-  `;
+      void main() {
+        vec3 color1 = vec3(0.2, 0.6, 1.0);
+        vec3 color2 = vec3(0.8, 0.2, 1.0);
+        
+        float mixValue = sin(vPosition.x + time * 0.5) * cos(vPosition.y + time * 0.5) * 0.5 + 0.5;
+        vec3 finalColor = mix(color1, color2, mixValue);
+        
+        float fresnel = dot(vNormal, vec3(0.0, 0.0, 1.0));
+        fresnel = pow(1.0 - fresnel, 1.5);
+        
+        gl_FragColor = vec4(finalColor * (0.8 + fresnel * 0.3), 0.9);
+      }
+    `,
+    }),
+    [],
+  );
 
   return (
-    <Sphere ref={meshRef} args={[1, 64, 64]} position={[0, 0, 0]}>
+    <mesh ref={meshRef} position={[0, 0, 0]}>
+      <sphereGeometry args={[1, 32, 32]} />
       <shaderMaterial
         ref={materialRef}
-        vertexShader={vertexShader}
-        fragmentShader={fragmentShader}
+        vertexShader={shaders.vertexShader}
+        fragmentShader={shaders.fragmentShader}
         uniforms={{
           time: { value: 0 },
         }}
         transparent={true}
         side={THREE.DoubleSide}
       />
-    </Sphere>
+    </mesh>
   );
 }
 
+// Simple loading component
 function SceneLoader() {
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <div className="animate-pulse text-cyber-blue">Loading 3D Scene...</div>
+      <div className="animate-pulse text-cyber-blue text-sm">Loading...</div>
     </div>
   );
 }
 
+// Lightweight scene wrapper
 export default function ThreeDScene() {
   return (
     <div className="w-full h-full">
       <Suspense fallback={<SceneLoader />}>
-        <Canvas
-          camera={{ position: [0, 0, 3], fov: 75 }}
-          style={{ background: "transparent" }}
-        >
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} intensity={1} />
-          <AnimatedSphere />
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            autoRotate
-            autoRotateSpeed={0.5}
-          />
-        </Canvas>
+        <div className="w-full h-full bg-gradient-to-br from-cyber-blue/5 to-cyber-purple/5 rounded-lg flex items-center justify-center">
+          <div className="w-16 h-16 bg-gradient-to-r from-cyber-blue to-cyber-purple rounded-full animate-pulse opacity-60"></div>
+        </div>
       </Suspense>
     </div>
   );
