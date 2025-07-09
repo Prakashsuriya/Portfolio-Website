@@ -104,8 +104,15 @@ function FloatingCard({
 
 export default function Portfolio() {
   const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  // Parallax transforms
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const yGrid = useTransform(scrollYProgress, [0, 1], ["0%", "70%"]);
+  const rotateZ = useTransform(scrollYProgress, [0, 1], [0, 360]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 0.8]);
+
   const heroRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
