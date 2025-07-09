@@ -241,7 +241,7 @@ export default function Portfolio() {
     "Cloud & Tools": [
       { name: "AWS", level: 70, color: "cyber-orange", icon: "☁️" },
       { name: "Git", level: 90, color: "cyber-green", icon: "📝" },
-      { name: "GitHub", level: 90, color: "cyber-purple", icon: "🐙" },
+      { name: "GitHub", level: 90, color: "cyber-purple", icon: "��" },
       { name: "Jupyter", level: 85, color: "cyber-blue", icon: "📓" },
       { name: "VS Code", level: 92, color: "neon-blue", icon: "💻" },
     ],
@@ -444,13 +444,20 @@ export default function Portfolio() {
                 >
                   Contact
                 </a>
-                <Button
-                  variant="outline"
-                  className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black w-fit"
+                <a
+                  href="https://cdn.builder.io/o/assets%2F8f78a356a05540998176ea24bafbe59e%2Fbc4d2154139244e1ab261e09e1b6dfdd?alt=media&token=b1ed2727-64cc-49b1-a021-8b0a5c36b01e&apiKey=8f78a356a05540998176ea24bafbe59e"
+                  download="Prakash_K_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Download className="w-4 h-4 mr-2" />
-                  Resume
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black w-fit"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Resume
+                  </Button>
+                </a>
               </div>
             </motion.div>
           )}
