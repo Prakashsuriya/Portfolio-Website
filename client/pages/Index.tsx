@@ -111,6 +111,43 @@ function RotatingRole() {
   );
 }
 
+// Alternating Photos Component
+function AlternatingPhotos() {
+  const photos = [
+    "https://cdn.builder.io/api/v1/image/assets%2F8f78a356a05540998176ea24bafbe59e%2Fe65fd045fa2647879a8958d38ff15b33?format=webp&width=800",
+    "https://cdn.builder.io/api/v1/image/assets%2F8f78a356a05540998176ea24bafbe59e%2Fdac232f2202a4225a147da737425b4fb?format=webp&width=800",
+  ];
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhotoIndex((prev) => (prev + 1) % photos.length);
+    }, 4000); // Change photo every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative w-full h-full">
+      {photos.map((photo, index) => (
+        <motion.img
+          key={index}
+          src={photo}
+          alt={`Prakash K - Photo ${index + 1}`}
+          className="absolute inset-0 w-full h-full object-cover rounded-full"
+          initial={{ opacity: 0 }}
+          animate={{
+            opacity: currentPhotoIndex === index ? 1 : 0,
+            scale: currentPhotoIndex === index ? 1 : 0.95,
+          }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          whileHover={{ scale: currentPhotoIndex === index ? 1.05 : 0.95 }}
+        />
+      ))}
+    </div>
+  );
+}
+
 // Floating Card Component
 function FloatingCard({
   children,
