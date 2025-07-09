@@ -614,6 +614,124 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Experience Timeline Section */}
+      <section
+        id="experience"
+        ref={experienceRef}
+        className="py-16 lg:py-20 relative bg-dark-surface/30"
+      >
+        {/* Parallax background elements */}
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+        >
+          <div className="absolute top-32 left-16 w-24 h-24 bg-gradient-to-r from-cyber-orange/5 to-cyber-pink/5 rounded-full blur-xl" />
+          <div className="absolute bottom-40 right-20 w-32 h-32 bg-gradient-to-r from-cyber-green/5 to-cyber-blue/5 rounded-full blur-2xl" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={experienceInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
+              Professional Experience
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+              My journey through innovative technology companies, building AI
+              solutions and full-stack applications
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyber-blue via-cyber-purple to-cyber-pink hidden md:block" />
+
+              <div className="space-y-8 lg:space-y-12">
+                {experience.map((exp, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    animate={experienceInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.6, delay: index * 0.3 }}
+                    className="relative"
+                  >
+                    {/* Timeline dot */}
+                    <div className="absolute left-6 top-8 w-4 h-4 bg-gradient-to-r from-cyber-blue to-cyber-purple rounded-full border-4 border-background z-10 hidden md:block" />
+
+                    <div className="md:ml-20">
+                      <FloatingCard delay={index * 0.2}>
+                        <Card className="glass border-white/10 group hover:glow-blue transition-all duration-300 hover:scale-105">
+                          <CardContent className="p-6 lg:p-8">
+                            <div className="flex items-start space-x-4 mb-6">
+                              <motion.div
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                className={`p-3 rounded-full bg-gradient-to-r ${exp.color} shadow-lg`}
+                              >
+                                {exp.icon}
+                              </motion.div>
+                              <div className="flex-1">
+                                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                                  <h3 className="text-xl lg:text-2xl font-bold text-foreground">
+                                    {exp.title}
+                                  </h3>
+                                  <Badge
+                                    variant="secondary"
+                                    className="bg-cyber-blue/20 text-cyber-blue border-cyber-blue/30 w-fit mt-2 lg:mt-0"
+                                  >
+                                    {exp.period}
+                                  </Badge>
+                                </div>
+                                <div className="flex flex-col lg:flex-row lg:items-center text-muted-foreground mb-4">
+                                  <span className="text-lg font-semibold text-cyber-purple">
+                                    {exp.company}
+                                  </span>
+                                  <span className="hidden lg:inline mx-2">
+                                    •
+                                  </span>
+                                  <span className="text-sm">
+                                    {exp.location}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="space-y-3">
+                              {exp.description.map((desc, descIndex) => (
+                                <motion.div
+                                  key={descIndex}
+                                  initial={{ opacity: 0, x: -20 }}
+                                  animate={
+                                    experienceInView ? { opacity: 1, x: 0 } : {}
+                                  }
+                                  transition={{
+                                    duration: 0.5,
+                                    delay: index * 0.3 + descIndex * 0.1,
+                                  }}
+                                  className="flex items-start space-x-3"
+                                >
+                                  <div className="w-2 h-2 bg-cyber-blue rounded-full mt-2 flex-shrink-0" />
+                                  <p className="text-muted-foreground leading-relaxed">
+                                    {desc}
+                                  </p>
+                                </motion.div>
+                              ))}
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </FloatingCard>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Projects Section */}
       <section
         id="projects"
