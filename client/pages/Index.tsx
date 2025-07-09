@@ -25,7 +25,7 @@ import {
 
 // 3D Sphere Component
 function AnimatedSphere() {
-  const meshRef = useRef();
+  const meshRef = useRef<any>();
 
   useFrame((state) => {
     if (meshRef.current) {
