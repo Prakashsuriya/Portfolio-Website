@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Futuristic AI-themed Portfolio Color System
+   * All variables expressed as HSL values for Tailwind compatibility
+  */
+  :root {
+    /* Base System Colors */
+    --background: 240 10% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 6% 8%;
+    --card-foreground: 210 40% 95%;
+
+    --popover: 240 8% 6%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 240 10% 4%;
+
+    --secondary: 240 4% 16%;
+    --secondary-foreground: 210 40% 90%;
+
+    --muted: 240 6% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 240 10% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 6% 20%;
+    --input: 240 6% 16%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Futuristic AI Color Palette */
+    --cyber-blue: 217 91% 60%;
+    --cyber-purple: 271 91% 65%;
+    --cyber-pink: 329 86% 70%;
+    --cyber-green: 142 76% 36%;
+    --cyber-orange: 31 100% 65%;
+
+    /* Neon Glow Variants */
+    --neon-blue: 217 100% 75%;
+    --neon-purple: 271 100% 80%;
+    --neon-pink: 329 100% 85%;
+    --neon-green: 142 86% 50%;
+    --neon-orange: 31 100% 75%;
+
+    /* Dark Surface Colors */
+    --dark-surface: 240 8% 6%;
+    --dark-secondary: 240 6% 10%;
+    --dark-tertiary: 240 4% 14%;
+  }
+
+  .light {
+    /* Light mode overrides for accessibility */
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 240 10% 4%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    /* Adapted colors for light mode */
+    --dark-surface: 210 40% 98%;
+    --dark-secondary: 210 40% 94%;
+    --dark-tertiary: 210 40% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-surface;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-blue/50 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-blue/70;
+  }
+}
+
+@layer components {
+  /* Glassmorphism effect */
+  .glass {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  /* Neon glow effects */
+  .glow-blue {
+    box-shadow:
+      0 0 20px hsl(var(--cyber-blue) / 0.5),
+      0 0 40px hsl(var(--cyber-blue) / 0.3);
+  }
+
+  .glow-purple {
+    box-shadow:
+      0 0 20px hsl(var(--cyber-purple) / 0.5),
+      0 0 40px hsl(var(--cyber-purple) / 0.3);
+  }
+
+  .glow-pink {
+    box-shadow:
+      0 0 20px hsl(var(--cyber-pink) / 0.5),
+      0 0 40px hsl(var(--cyber-pink) / 0.3);
+  }
+
+  .glow-green {
+    box-shadow:
+      0 0 20px hsl(var(--cyber-green) / 0.5),
+      0 0 40px hsl(var(--cyber-green) / 0.3);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink bg-clip-text text-transparent;
+  }
+
+  /* 3D transform utilities */
+  .transform-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* Grid background */
+  .cyber-grid {
+    background-image:
+      linear-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Animated border */
+  .animated-border {
+    position: relative;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--cyber-blue)),
+      transparent
+    );
+    background-size: 200% 100%;
+    animation: borderMove 3s linear infinite;
+  }
+
+  @keyframes borderMove {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
