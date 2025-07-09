@@ -11,6 +11,39 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/spa",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Separate vendor chunks
+          "react-vendor": ["react", "react-dom"],
+          "router-vendor": ["react-router-dom"],
+          "ui-vendor": ["framer-motion"],
+          "three-vendor": ["@react-three/fiber", "@react-three/drei"],
+          "icons-vendor": ["lucide-react"],
+          // Split large UI components
+          components: [
+            "./client/components/ui/button.tsx",
+            "./client/components/ui/card.tsx",
+            "./client/components/ui/badge.tsx",
+          ],
+        },
+        chunkFileNames: (chunkInfo) => {
+          const facadeModuleId = chunkInfo.facadeModuleId
+            ? chunkInfo.facadeModuleId
+                .split("/")
+                .pop()
+                .replace(".tsx", "")
+                .replace(".ts", "")
+            : "chunk";
+          return `assets/${facadeModuleId}-[hash].js`;
+        },
+      },
+    },
+    chunkSizeWarningLimit: 500,
+    // Enable source maps for better debugging in production
+    sourcemap: false,
+    // Minimize CSS
+    cssCodeSplit: true,
   },
   plugins: [react(), expressPlugin()],
   resolve: {
