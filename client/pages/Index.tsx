@@ -428,18 +428,22 @@ export default function Portfolio() {
               </div>
 
               <motion.div
-                className="flex flex-wrap gap-4"
+                className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.5 }}
               >
-                <Button className="bg-gradient-to-r from-cyber-blue to-cyber-purple text-white hover:scale-105 transition-transform">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-cyber-blue to-cyber-purple text-white hover:scale-105 transition-transform w-full sm:w-auto"
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   Get In Touch
                 </Button>
                 <Button
+                  size="lg"
                   variant="outline"
-                  className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
+                  className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black w-full sm:w-auto"
                 >
                   <Github className="w-4 h-4 mr-2" />
                   View Projects
@@ -447,28 +451,32 @@ export default function Portfolio() {
               </motion.div>
 
               <motion.div
-                className="flex space-x-6"
+                className="flex space-x-8 justify-center lg:justify-start"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 3 }}
               >
                 <a
                   href="https://github.com/Prakashsuriya"
-                  className="text-muted-foreground hover:text-cyber-blue transition-colors"
+                  className="text-muted-foreground hover:text-cyber-blue transition-colors transform hover:scale-110"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Github className="w-6 h-6" />
+                  <Github className="w-7 h-7" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/prakashkbtech/"
-                  className="text-muted-foreground hover:text-cyber-purple transition-colors"
+                  className="text-muted-foreground hover:text-cyber-purple transition-colors transform hover:scale-110"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Linkedin className="w-6 h-6" />
+                  <Linkedin className="w-7 h-7" />
                 </a>
                 <a
                   href="mailto:prakashranjanr8@gmail.com"
-                  className="text-muted-foreground hover:text-cyber-pink transition-colors"
+                  className="text-muted-foreground hover:text-cyber-pink transition-colors transform hover:scale-110"
                 >
-                  <Mail className="w-6 h-6" />
+                  <Mail className="w-7 h-7" />
                 </a>
               </motion.div>
             </motion.div>
