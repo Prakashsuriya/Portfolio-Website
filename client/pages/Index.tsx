@@ -183,7 +183,9 @@ export default function Portfolio() {
             >
               Prakash K
             </motion.div>
-            <div className="hidden md:flex space-x-8">
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
               <a
                 href="#home"
                 className="hover:text-cyber-blue transition-colors"
@@ -209,14 +211,81 @@ export default function Portfolio() {
                 Contact
               </a>
             </div>
-            <Button
-              variant="outline"
-              className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Resume
-            </Button>
+
+            {/* Right side buttons */}
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              <Button
+                variant="outline"
+                className="hidden sm:flex border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Resume
+              </Button>
+
+              {/* Mobile menu button */}
+              <Button
+                variant="outline"
+                size="icon"
+                className="md:hidden border-cyber-blue/30 hover:border-cyber-blue"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-4 w-4" />
+                ) : (
+                  <Menu className="h-4 w-4" />
+                )}
+              </Button>
+            </div>
           </div>
+
+          {/* Mobile Navigation Menu */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="md:hidden mt-4 pb-4 border-t border-white/10"
+            >
+              <div className="flex flex-col space-y-4 pt-4">
+                <a
+                  href="#home"
+                  className="hover:text-cyber-blue transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Home
+                </a>
+                <a
+                  href="#projects"
+                  className="hover:text-cyber-purple transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Projects
+                </a>
+                <a
+                  href="#skills"
+                  className="hover:text-cyber-pink transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Skills
+                </a>
+                <a
+                  href="#contact"
+                  className="hover:text-cyber-green transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Contact
+                </a>
+                <Button
+                  variant="outline"
+                  className="border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black w-fit"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </Button>
+              </div>
+            </motion.div>
+          )}
         </div>
       </nav>
 
