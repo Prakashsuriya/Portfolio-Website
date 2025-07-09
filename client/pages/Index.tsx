@@ -543,18 +543,31 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" ref={projectsRef} className="py-20 relative">
-        <div className="container mx-auto px-6">
+      <section
+        id="projects"
+        ref={projectsRef}
+        className="py-16 lg:py-20 relative"
+      >
+        {/* Parallax background elements */}
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+        >
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-cyber-purple/5 to-cyber-pink/5 rounded-full blur-xl" />
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-cyber-green/5 to-cyber-blue/5 rounded-full blur-2xl" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={projectsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl lg:text-6xl font-bold gradient-text mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
               Featured Projects
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Innovative AI/ML solutions that push the boundaries of what's
               possible
             </p>
