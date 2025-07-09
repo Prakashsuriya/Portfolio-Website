@@ -2,7 +2,12 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./client/**/*.{ts,tsx}"],
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./hooks/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -48,6 +53,11 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         // Futuristic AI-themed colors
+        "cyber-blue": "hsl(var(--cyber-blue))",
+        "cyber-purple": "hsl(var(--cyber-purple))",
+        "cyber-pink": "hsl(var(--cyber-pink))",
+        "cyber-green": "hsl(var(--cyber-green))",
+        "cyber-orange": "hsl(var(--cyber-orange))",
         cyber: {
           blue: "hsl(var(--cyber-blue))",
           purple: "hsl(var(--cyber-purple))",
@@ -62,6 +72,9 @@ export default {
           green: "hsl(var(--neon-green))",
           orange: "hsl(var(--neon-orange))",
         },
+        "dark-surface": "hsl(var(--dark-surface))",
+        "dark-secondary": "hsl(var(--dark-secondary))",
+        "dark-tertiary": "hsl(var(--dark-tertiary))",
         dark: {
           surface: "hsl(var(--dark-surface))",
           secondary: "hsl(var(--dark-secondary))",
