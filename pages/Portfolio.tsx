@@ -1,7 +1,6 @@
 "use client";
 
 import { Suspense, useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -16,28 +15,54 @@ import {
   ExternalLink,
   MapPin,
   Calendar,
-  Code,
-  Database,
-  Brain,
-  Cloud,
   Users,
   Award,
-  ChevronDown,
   Menu,
   X,
 } from "lucide-react";
 
-// Dynamically import ThreeDScene to prevent SSR issues
+// Dynamically import heavy components with loading states
+const MotionDiv = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.div),
+  {
+    ssr: false,
+    loading: () => <div className="opacity-0"></div>,
+  },
+);
+
+const MotionH1 = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.h1),
+  {
+    ssr: false,
+    loading: () => <h1></h1>,
+  },
+);
+
+const MotionP = dynamic(
+  () => import("framer-motion").then((mod) => mod.motion.p),
+  {
+    ssr: false,
+    loading: () => <p></p>,
+  },
+);
+
+// Lightweight 3D Scene - only loads heavy version on user interaction
 const ThreeDScene = dynamic(() => import("@/components/ThreeDScene"), {
   ssr: false,
   loading: () => (
     <div className="flex items-center justify-center w-full h-full">
-      <div className="animate-pulse text-cyber-blue">Loading 3D Scene...</div>
+      <div className="animate-pulse text-cyber-blue text-sm">Loading...</div>
     </div>
   ),
 });
 
-// Component for alternating photos
+// Optional full 3D scene for enhanced experience
+const Full3DScene = dynamic(() => import("@/components/Full3DScene"), {
+  ssr: false,
+  loading: () => <ThreeDScene />,
+});
+
+// Component for alternating photos with CSS animations instead of Framer Motion
 const AlternatingPhotos = () => {
   const [currentPhoto, setCurrentPhoto] = useState(0);
 
@@ -50,41 +75,27 @@ const AlternatingPhotos = () => {
     const interval = setInterval(() => {
       setCurrentPhoto((prev) => (prev + 1) % photos.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="relative w-48 h-48 mx-auto">
       {photos.map((photo, index) => (
-        <motion.img
+        <img
           key={index}
           src={photo}
           alt={`Prakash K ${index === 0 ? "Professional" : "Casual"}`}
-          className="absolute top-0 left-0 w-full h-full object-cover rounded-full border-4 border-cyber-blue/50"
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: currentPhoto === index ? 1 : 0,
-            scale: currentPhoto === index ? 1 : 0.9,
-          }}
-          transition={{ duration: 0.5 }}
+          className={`absolute top-0 left-0 w-full h-full object-cover rounded-full border-4 border-cyber-blue/50 transition-all duration-500 ${
+            currentPhoto === index
+              ? "opacity-100 scale-100"
+              : "opacity-0 scale-90"
+          }`}
         />
       ))}
       <div className="absolute inset-0 rounded-full border-4 border-transparent bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink p-1 animate-spin-slow">
         <div className="w-full h-full rounded-full border-4 border-background"></div>
       </div>
-      <motion.div
-        className="absolute -inset-4 rounded-full bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-pink/20 blur-lg"
-        animate={{
-          scale: [1, 1.1, 1],
-          opacity: [0.5, 0.8, 0.5],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      <div className="absolute -inset-4 rounded-full bg-gradient-to-r from-cyber-blue/20 via-cyber-purple/20 to-cyber-pink/20 blur-lg animate-pulse"></div>
     </div>
   );
 };
@@ -92,6 +103,7 @@ const AlternatingPhotos = () => {
 export default function Portfolio() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentRole, setCurrentRole] = useState(0);
+  const [use3D, setUse3D] = useState(false);
 
   const roles = [
     "AI/ML Engineer",
@@ -220,13 +232,7 @@ export default function Portfolio() {
       <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-cyber-blue/20 backdrop-blur-md">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-xl font-bold gradient-text"
-            >
-              Prakash K
-            </motion.div>
+            <div className="text-xl font-bold gradient-text">Prakash K</div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
@@ -262,12 +268,7 @@ export default function Portfolio() {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="md:hidden border-t border-cyber-blue/20 py-4"
-            >
+            <div className="md:hidden border-t border-cyber-blue/20 py-4 animate-slide-up">
               {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -278,7 +279,7 @@ export default function Portfolio() {
                   {item.name}
                 </a>
               ))}
-            </motion.div>
+            </div>
           )}
         </div>
       </nav>
@@ -289,58 +290,29 @@ export default function Portfolio() {
         className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
       >
         <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
-          >
+          <div className="space-y-6 animate-slide-up">
             <div className="space-y-4">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-4xl md:text-6xl font-bold"
-              >
+              <h1 className="text-4xl md:text-6xl font-bold">
                 Hi, I'm <span className="gradient-text">Prakash K</span>
-              </motion.h1>
+              </h1>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-xl md:text-2xl text-muted-foreground h-8"
-              >
-                <motion.span
+              <div className="text-xl md:text-2xl text-muted-foreground h-8">
+                <span
                   key={currentRole}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="text-cyber-blue font-semibold"
+                  className="text-cyber-blue font-semibold transition-all duration-500"
                 >
                   {roles[currentRole]}
-                </motion.span>
-              </motion.div>
+                </span>
+              </div>
             </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="text-lg text-muted-foreground max-w-lg"
-            >
+            <p className="text-lg text-muted-foreground max-w-lg">
               Passionate about building intelligent solutions with AI/ML,
               developing scalable web applications, and exploring the
               intersection of technology and innovation.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex flex-wrap gap-4"
-            >
+            <div className="flex flex-wrap gap-4">
               <Button asChild className="bg-cyber-blue hover:bg-cyber-blue/80">
                 <a href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
@@ -361,62 +333,53 @@ export default function Portfolio() {
                   Resume
                 </a>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col items-center space-y-8"
-          >
+          <div className="flex flex-col items-center space-y-8 animate-slide-up">
             <AlternatingPhotos />
 
-            <div className="w-full h-64 lg:h-80">
+            <div className="w-full h-64 lg:h-80 relative">
               <Suspense
                 fallback={
                   <div className="flex items-center justify-center w-full h-full">
-                    <div className="animate-pulse text-cyber-blue">
-                      Loading 3D Scene...
+                    <div className="animate-pulse text-cyber-blue text-sm">
+                      Loading...
                     </div>
                   </div>
                 }
               >
-                <ThreeDScene />
+                {use3D ? <Full3DScene /> : <ThreeDScene />}
               </Suspense>
+
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setUse3D(!use3D)}
+                className="absolute bottom-2 right-2 text-xs border-cyber-blue/50"
+              >
+                {use3D ? "Simple" : "3D"} View
+              </Button>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Experience Section */}
       <section id="experience" className="py-20 bg-dark-surface/50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Professional <span className="gradient-text">Experience</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               My journey in software development and AI/ML engineering
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             {experience.map((exp, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="mb-8"
-              >
+              <div key={index} className="mb-8 animate-slide-up">
                 <Card className="glass border-cyber-blue/20 p-6">
                   <CardContent className="p-0">
                     <div className="flex flex-col md:flex-row md:items-start gap-4">
@@ -455,7 +418,7 @@ export default function Portfolio() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -464,30 +427,18 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section id="projects" className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Featured <span className="gradient-text">Projects</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Showcasing my passion for AI/ML and full-stack development
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
+              <div key={index} className="animate-slide-up">
                 <Card className="glass border-cyber-blue/20 h-full hover:border-cyber-blue/40 transition-all duration-300 group">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-3 gradient-text">
@@ -541,7 +492,7 @@ export default function Portfolio() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -550,31 +501,19 @@ export default function Portfolio() {
       {/* Skills Section */}
       <section id="skills" className="py-20 bg-dark-surface/50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Technical <span className="gradient-text">Skills</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Technologies and tools I use to bring ideas to life
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skills).map(
               ([category, skillList], categoryIndex) => (
-                <motion.div
-                  key={category}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: categoryIndex * 0.1 }}
-                  viewport={{ once: true }}
-                >
+                <div key={category} className="animate-slide-up">
                   <Card className="glass border-cyber-blue/20 h-full">
                     <CardContent className="p-6">
                       <h3 className="text-lg font-semibold mb-4 text-cyber-blue">
@@ -582,24 +521,20 @@ export default function Portfolio() {
                       </h3>
                       <div className="space-y-3">
                         {skillList.map((skill, index) => (
-                          <motion.div
+                          <div
                             key={skill.name}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
                             className="flex items-center gap-3 p-2 rounded-lg glass hover:bg-cyber-blue/10 transition-colors"
                           >
                             <span className="text-xl">{skill.icon}</span>
                             <span className="text-sm font-medium">
                               {skill.name}
                             </span>
-                          </motion.div>
+                          </div>
                         ))}
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+                </div>
               ),
             )}
           </div>
@@ -609,28 +544,17 @@ export default function Portfolio() {
       {/* Social Works Section */}
       <section id="socialworks" className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Social <span className="gradient-text">Works</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Contributing to community and helping others grow
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div className="animate-slide-up">
               <Card className="glass border-cyber-blue/20 h-full">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
@@ -652,14 +576,9 @@ export default function Portfolio() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="animate-slide-up">
               <Card className="glass border-cyber-blue/20 h-full">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-4">
@@ -693,7 +612,7 @@ export default function Portfolio() {
                   </p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -701,32 +620,20 @@ export default function Portfolio() {
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-dark-surface/50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Get In <span className="gradient-text">Touch</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Let's connect and explore opportunities to work together
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-4xl mx-auto">
             <Card className="glass border-cyber-blue/20">
               <CardContent className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                  >
+                  <div className="space-y-6 animate-slide-up">
                     <h3 className="text-2xl font-semibold gradient-text mb-6">
                       Let's start a conversation
                     </h3>
@@ -793,15 +700,9 @@ export default function Portfolio() {
                         </a>
                       </Button>
                     </div>
-                  </motion.div>
+                  </div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                  >
+                  <div className="space-y-6 animate-slide-up">
                     <h3 className="text-xl font-semibold">Quick Actions</h3>
 
                     <div className="space-y-4">
@@ -845,7 +746,7 @@ export default function Portfolio() {
                         </a>
                       </Button>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
