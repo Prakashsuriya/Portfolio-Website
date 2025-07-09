@@ -706,31 +706,49 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" ref={contactRef} className="py-20">
-        <div className="container mx-auto px-6">
+      <section
+        id="contact"
+        ref={contactRef}
+        className="py-16 lg:py-20 relative"
+      >
+        {/* Parallax background elements */}
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+        >
+          <div className="absolute top-20 right-20 w-28 h-28 bg-gradient-to-r from-cyber-blue/5 to-cyber-purple/5 rounded-full blur-xl" />
+          <div className="absolute bottom-32 left-16 w-36 h-36 bg-gradient-to-r from-cyber-pink/5 to-cyber-green/5 rounded-full blur-2xl" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={contactInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl lg:text-6xl font-bold gradient-text mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
               Let's Connect
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Ready to collaborate on the next breakthrough AI project? Let's
               build the future together.
             </p>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
               <FloatingCard>
-                <Card className="glass border-white/10 p-6 text-center group hover:glow-blue transition-all">
+                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:glow-blue transition-all duration-300 hover:scale-105">
                   <CardContent className="p-0">
-                    <Mail className="w-8 h-8 mx-auto mb-4 text-cyber-blue" />
-                    <h3 className="font-semibold mb-2">Email</h3>
-                    <p className="text-sm text-muted-foreground break-all">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="inline-block"
+                    >
+                      <Mail className="w-8 h-8 mx-auto mb-3 lg:mb-4 text-cyber-blue" />
+                    </motion.div>
+                    <h3 className="font-semibold mb-2 text-lg">Email</h3>
+                    <p className="text-xs lg:text-sm text-muted-foreground break-all leading-relaxed">
                       prakashranjanr8@gmail.com
                     </p>
                   </CardContent>
@@ -738,10 +756,15 @@ export default function Portfolio() {
               </FloatingCard>
 
               <FloatingCard delay={0.1}>
-                <Card className="glass border-white/10 p-6 text-center group hover:glow-purple transition-all">
+                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:glow-purple transition-all duration-300 hover:scale-105">
                   <CardContent className="p-0">
-                    <Phone className="w-8 h-8 mx-auto mb-4 text-cyber-purple" />
-                    <h3 className="font-semibold mb-2">Phone</h3>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="inline-block"
+                    >
+                      <Phone className="w-8 h-8 mx-auto mb-3 lg:mb-4 text-cyber-purple" />
+                    </motion.div>
+                    <h3 className="font-semibold mb-2 text-lg">Phone</h3>
                     <p className="text-sm text-muted-foreground">
                       +91 9487821387
                     </p>
@@ -750,10 +773,15 @@ export default function Portfolio() {
               </FloatingCard>
 
               <FloatingCard delay={0.2}>
-                <Card className="glass border-white/10 p-6 text-center group hover:glow-pink transition-all">
+                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:glow-pink transition-all duration-300 hover:scale-105">
                   <CardContent className="p-0">
-                    <Linkedin className="w-8 h-8 mx-auto mb-4 text-cyber-pink" />
-                    <h3 className="font-semibold mb-2">LinkedIn</h3>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="inline-block"
+                    >
+                      <Linkedin className="w-8 h-8 mx-auto mb-3 lg:mb-4 text-cyber-pink" />
+                    </motion.div>
+                    <h3 className="font-semibold mb-2 text-lg">LinkedIn</h3>
                     <p className="text-sm text-muted-foreground">
                       /in/prakashkbtech
                     </p>
@@ -762,10 +790,15 @@ export default function Portfolio() {
               </FloatingCard>
 
               <FloatingCard delay={0.3}>
-                <Card className="glass border-white/10 p-6 text-center group hover:glow-green transition-all">
+                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:glow-green transition-all duration-300 hover:scale-105">
                   <CardContent className="p-0">
-                    <Github className="w-8 h-8 mx-auto mb-4 text-cyber-green" />
-                    <h3 className="font-semibold mb-2">GitHub</h3>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="inline-block"
+                    >
+                      <Github className="w-8 h-8 mx-auto mb-3 lg:mb-4 text-cyber-green" />
+                    </motion.div>
+                    <h3 className="font-semibold mb-2 text-lg">GitHub</h3>
                     <p className="text-sm text-muted-foreground">
                       /Prakashsuriya
                     </p>
@@ -775,14 +808,14 @@ export default function Portfolio() {
             </div>
 
             <motion.div
-              className="text-center mt-12"
+              className="text-center mt-8 lg:mt-12"
               initial={{ opacity: 0 }}
               animate={contactInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.5 }}
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink text-white hover:scale-105 transition-transform"
+                className="bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink text-white hover:scale-105 transition-transform w-full sm:w-auto px-8 py-4"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Start a Conversation
