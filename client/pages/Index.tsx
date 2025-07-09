@@ -159,36 +159,55 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "Personalized Chatbot Project",
+      title: "Personalized Educational Chatbot",
       description:
-        "Advanced AI chatbot using GPT-3.5 with custom training data for personalized responses and natural language understanding.",
-      tech: ["Python", "OpenAI GPT-3.5", "NLP", "Flask"],
+        "Interactive AI chatbot leveraging Google's Gemini Pro API for personalized learning experiences with conversation history and session management.",
+      tech: ["Python", "Google Gemini Pro", "AI/ML", "Session Management"],
       color: "from-cyber-blue to-cyber-purple",
       icon: <Brain className="w-6 h-6" />,
+      github:
+        "https://github.com/Prakashsur/Personalized-Educational-Chatbot-with-OpenAI-API-Integration",
+      demo: null,
     },
     {
       title: "Virtual Mouse System",
       description:
-        "Computer vision-based hand tracking system that converts hand gestures into mouse controls using advanced ML algorithms.",
-      tech: ["Python", "OpenCV", "MediaPipe", "Computer Vision"],
+        "Innovative accessibility tool enabling mouse control through eye movement tracking, providing hands-free computer interaction using computer vision.",
+      tech: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
       color: "from-cyber-purple to-cyber-pink",
       icon: <Zap className="w-6 h-6" />,
+      github: "https://github.com/Prakashsur/Virtual-Mouse-Using-Eye",
+      demo: null,
     },
     {
-      title: "GenAI + n8n Automation",
+      title: "Banyan Grocers E-commerce",
       description:
-        "Intelligent workflow automation platform combining generative AI with n8n for seamless business process automation.",
-      tech: ["GenAI", "n8n", "Automation", "API Integration"],
+        "Full-featured online grocery store supporting local farmers with organic produce sales, complete with shopping cart and responsive design.",
+      tech: ["React.js", "Next.js", "E-commerce", "Vercel"],
       color: "from-cyber-pink to-cyber-green",
       icon: <Layers className="w-6 h-6" />,
+      github: "https://github.com/Prakashsuriya/Store",
+      demo: "https://store-umber-two.vercel.app/",
     },
     {
-      title: "Mobile-Controlled Drone Navigation",
+      title: "Infogram'22 Symposium Website",
       description:
-        "IoT-based drone control system with real-time navigation, obstacle detection, and autonomous flight capabilities.",
-      tech: ["IoT", "Python", "Mobile App", "Computer Vision"],
+        "Comprehensive event management website for intercollegiate technical symposium with registration system and event scheduling.",
+      tech: ["React.js", "HTML/CSS", "JavaScript", "Responsive Design"],
       color: "from-cyber-green to-cyber-orange",
       icon: <Cpu className="w-6 h-6" />,
+      github: "https://github.com/Prakashsuriya/Infogram-22",
+      demo: "https://infogram-22.vercel.app/",
+    },
+    {
+      title: "Lab Management System",
+      description:
+        "Secure laboratory management application with admin authentication for managing lab operations and data with role-based access control.",
+      tech: ["React.js", "Authentication", "Admin Panel", "Vercel"],
+      color: "from-cyber-orange to-cyber-blue",
+      icon: <GitBranch className="w-6 h-6" />,
+      github: "https://github.com/Prakashsuriya/Lab-App",
+      demo: "https://lab-app-nine.vercel.app/",
     },
   ];
 
