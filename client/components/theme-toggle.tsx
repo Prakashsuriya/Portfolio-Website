@@ -58,13 +58,6 @@ export function ThemeToggle() {
           <Moon className="mr-2 h-4 w-4 text-cyber-blue" />
           <span>Dark</span>
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => setTheme("system")}
-          className="hover:bg-cyber-purple/20 cursor-pointer"
-        >
-          <Monitor className="mr-2 h-4 w-4 text-cyber-purple" />
-          <span>System</span>
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
