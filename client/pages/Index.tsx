@@ -839,9 +839,9 @@ export default function Portfolio() {
 
           <div className="grid gap-6 lg:gap-8 md:grid-cols-2">
             {projects.map((project, index) => (
-              <FloatingCard key={index} delay={index * 0.2} className="h-full">
-                <Card className="glass border-white/10 h-full group hover:glow-blue transition-all duration-300 transform hover:scale-105">
-                  <CardContent className="p-6 lg:p-8 h-full flex flex-col">
+              <FloatingCard key={index} delay={index * 0.2}>
+                <Card className="glass border-white/10 p-6 lg:p-8 group hover:glow-blue transition-all duration-300 hover:scale-105">
+                  <CardContent className="p-0">
                     <div className="flex items-center space-x-4 mb-6">
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -849,12 +849,12 @@ export default function Portfolio() {
                       >
                         {project.icon}
                       </motion.div>
-                      <h3 className="text-xl lg:text-2xl font-bold">
+                      <h3 className="text-xl lg:text-2xl font-bold gradient-text">
                         {project.title}
                       </h3>
                     </div>
 
-                    <p className="text-muted-foreground mb-6 flex-grow text-sm lg:text-base leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed mb-6">
                       {project.description}
                     </p>
 
