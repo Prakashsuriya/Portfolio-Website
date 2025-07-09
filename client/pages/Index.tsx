@@ -1163,7 +1163,7 @@ export default function Portfolio() {
       </section>
 
       {/* Leadership & Volunteering Section */}
-      <section className="py-16 lg:py-20 relative">
+      <section id="socialworks" className="py-16 lg:py-20 relative">
         {/* Parallax background elements */}
         <motion.div
           style={{ y: yBackground }}
