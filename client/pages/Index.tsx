@@ -599,13 +599,15 @@ export default function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 2.5 }}
               >
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-cyber-blue to-cyber-purple text-white hover:scale-105 transition-transform w-full sm:w-auto"
-                >
-                  <Mail className="w-4 h-4 mr-2" />
-                  Get In Touch
-                </Button>
+                <a href="mailto:prakashranjanr8@gmail.com">
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-cyber-blue to-cyber-purple text-white hover:scale-105 transition-transform w-full sm:w-auto"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Get In Touch
+                  </Button>
+                </a>
                 <Button
                   size="lg"
                   variant="outline"
