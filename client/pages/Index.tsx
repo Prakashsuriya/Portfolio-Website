@@ -146,11 +146,13 @@ export default function Portfolio() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 0.8]);
 
   const heroRef = useRef(null);
+  const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const skillsRef = useRef(null);
   const contactRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true });
+  const experienceInView = useInView(experienceRef, { once: true });
   const projectsInView = useInView(projectsRef, { once: true });
   const skillsInView = useInView(skillsRef, { once: true });
   const contactInView = useInView(contactRef, { once: true });
