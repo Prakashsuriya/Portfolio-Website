@@ -362,13 +362,20 @@ export default function Portfolio() {
             {/* Right side buttons */}
             <div className="flex items-center space-x-4">
               <ThemeToggle />
-              <Button
-                variant="outline"
-                className="hidden sm:flex border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
+              <a
+                href="https://cdn.builder.io/o/assets%2F8f78a356a05540998176ea24bafbe59e%2Fbc4d2154139244e1ab261e09e1b6dfdd?alt=media&token=b1ed2727-64cc-49b1-a021-8b0a5c36b01e&apiKey=8f78a356a05540998176ea24bafbe59e"
+                download="Prakash_K_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Download className="w-4 h-4 mr-2" />
-                Resume
-              </Button>
+                <Button
+                  variant="outline"
+                  className="hidden sm:flex border-cyber-blue text-cyber-blue hover:bg-cyber-blue hover:text-black"
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Resume
+                </Button>
+              </a>
 
               {/* Mobile menu button */}
               <Button
