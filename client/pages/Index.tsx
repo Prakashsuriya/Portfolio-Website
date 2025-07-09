@@ -268,7 +268,7 @@ export default function Portfolio() {
     "Data Handling": [
       { name: "Pandas", level: 90, color: "cyber-blue", icon: "🐼" },
       { name: "NumPy", level: 88, color: "cyber-purple", icon: "🔢" },
-      { name: "SQL", level: 85, color: "cyber-green", icon: "🗄️" },
+      { name: "SQL", level: 85, color: "cyber-green", icon: "���️" },
       { name: "Polaris", level: 75, color: "cyber-orange", icon: "⭐" },
     ],
     "APIs & Deployment": [
@@ -1589,7 +1589,7 @@ export default function Portfolio() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            © 2024 Prakash K. Crafted with cutting-edge tech and futuristic
+            © 2025 Prakash K. Crafted with cutting-edge tech and futuristic
             design.
           </motion.p>
           <motion.div
