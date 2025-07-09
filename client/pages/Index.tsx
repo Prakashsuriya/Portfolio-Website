@@ -5,6 +5,7 @@ import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
   Github,
   Linkedin,
@@ -18,6 +19,8 @@ import {
   Cpu,
   Layers,
   GitBranch,
+  Menu,
+  X,
 } from "lucide-react";
 
 // 3D Sphere Component
