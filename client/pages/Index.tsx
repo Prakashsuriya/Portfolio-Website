@@ -1078,6 +1078,152 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Leadership & Volunteering Section */}
+      <section className="py-16 lg:py-20 relative">
+        {/* Parallax background elements */}
+        <motion.div
+          style={{ y: yBackground }}
+          className="absolute inset-0 pointer-events-none overflow-hidden"
+        >
+          <div className="absolute top-20 left-10 w-28 h-28 bg-gradient-to-r from-cyber-green/5 to-cyber-blue/5 rounded-full blur-xl" />
+          <div className="absolute bottom-32 right-16 w-36 h-36 bg-gradient-to-r from-cyber-orange/5 to-cyber-purple/5 rounded-full blur-2xl" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={contactInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
+              Leadership & Social Impact
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+              Making a difference through community service and leadership
+            </p>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
+            <FloatingCard delay={0.2}>
+              <Card className="glass border-white/10 group hover:glow-green transition-all duration-300">
+                <CardContent className="p-8 lg:p-12">
+                  <div className="flex items-center space-x-6 mb-8">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="p-4 rounded-full bg-gradient-to-r from-cyber-green to-cyber-blue shadow-lg"
+                    >
+                      <svg
+                        className="w-8 h-8 text-white"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </motion.div>
+                    <div className="flex-1">
+                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-2">
+                        <h3 className="text-2xl lg:text-3xl font-bold text-foreground">
+                          City Leader – U&I NGO
+                        </h3>
+                        <Badge
+                          variant="secondary"
+                          className="bg-cyber-green/20 text-cyber-green border-cyber-green/30 w-fit mt-2 lg:mt-0"
+                        >
+                          June 2023 – Present
+                        </Badge>
+                      </div>
+                      <p className="text-lg text-cyber-green font-semibold">
+                        Leadership & Volunteering
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-cyber-blue mb-4">
+                        Key Achievements
+                      </h4>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-2 h-2 bg-cyber-green rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-muted-foreground leading-relaxed">
+                          Led a team of 10+ volunteers in conducting weekly
+                          English classes for underprivileged children
+                        </p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                        className="flex items-start space-x-3"
+                      >
+                        <div className="w-2 h-2 bg-cyber-green rounded-full mt-2 flex-shrink-0" />
+                        <p className="text-muted-foreground leading-relaxed">
+                          Promoted from Volunteer to City Leader after
+                          consistently managing classes, attendance, and
+                          leadership meetings
+                        </p>
+                      </motion.div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-cyber-purple mb-4">
+                        Impact & Growth
+                      </h4>
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="flex items-center space-x-4 p-4 bg-dark-secondary/50 rounded-lg"
+                      >
+                        <div className="text-3xl font-bold text-cyber-green">
+                          10+
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">
+                            Team Members
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Under Leadership
+                          </p>
+                        </div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={contactInView ? { opacity: 1, x: 0 } : {}}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="flex items-center space-x-4 p-4 bg-dark-secondary/50 rounded-lg"
+                      >
+                        <div className="text-3xl font-bold text-cyber-purple">
+                          18+
+                        </div>
+                        <div>
+                          <p className="text-sm text-muted-foreground">
+                            Months
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            Active Service
+                          </p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </FloatingCard>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section
         id="contact"
