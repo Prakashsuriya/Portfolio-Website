@@ -625,43 +625,77 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" ref={skillsRef} className="py-20 bg-dark-surface/50">
-        <div className="container mx-auto px-6">
+      <section
+        id="skills"
+        ref={skillsRef}
+        className="py-16 lg:py-20 bg-dark-surface/50 relative overflow-hidden"
+      >
+        {/* Parallax background elements */}
+        <motion.div
+          style={{ y: yGrid }}
+          className="absolute inset-0 pointer-events-none"
+        >
+          <div className="absolute top-40 left-20 w-24 h-24 border border-cyber-green/10 rounded-lg rotate-12" />
+          <div className="absolute bottom-32 right-16 w-32 h-32 border border-cyber-orange/10 rounded-full" />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={skillsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12 lg:mb-16"
           >
-            <h2 className="text-4xl lg:text-6xl font-bold gradient-text mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-bold gradient-text mb-4 lg:mb-6">
               Technical Skills
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
               Cutting-edge technologies and frameworks I use to build
               intelligent systems
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
             {skills.map((skill, index) => (
               <FloatingCard key={index} delay={index * 0.1}>
-                <Card className="glass border-white/10 p-6 text-center group hover:scale-105 transition-transform">
+                <Card className="glass border-white/10 p-4 lg:p-6 text-center group hover:scale-105 hover:glow-blue transition-all duration-300">
                   <CardContent className="p-0">
-                    <h3 className="text-xl font-semibold mb-4">{skill.name}</h3>
+                    <h3 className="text-lg lg:text-xl font-semibold mb-3 lg:mb-4">
+                      {skill.name}
+                    </h3>
                     <div className="relative">
-                      <div className="w-full bg-dark-secondary rounded-full h-3 mb-2">
+                      <div className="w-full bg-dark-secondary rounded-full h-2 lg:h-3 mb-2">
                         <motion.div
-                          className={`bg-gradient-to-r from-${skill.color} to-neon-blue h-full rounded-full`}
+                          className={`bg-gradient-to-r from-${skill.color} to-neon-blue h-full rounded-full relative overflow-hidden`}
                           initial={{ width: 0 }}
                           animate={
                             skillsInView ? { width: `${skill.level}%` } : {}
                           }
-                          transition={{ duration: 1, delay: index * 0.1 }}
-                        />
+                          transition={{
+                            duration: 1.5,
+                            delay: index * 0.1,
+                            ease: "easeOut",
+                          }}
+                        >
+                          <motion.div
+                            className="absolute inset-0 bg-white/20"
+                            animate={{ x: ["-100%", "100%"] }}
+                            transition={{
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }}
+                          />
+                        </motion.div>
                       </div>
-                      <span className="text-sm text-muted-foreground">
+                      <motion.span
+                        className="text-sm text-muted-foreground font-medium"
+                        initial={{ opacity: 0 }}
+                        animate={skillsInView ? { opacity: 1 } : {}}
+                        transition={{ delay: index * 0.1 + 1 }}
+                      >
                         {skill.level}%
-                      </span>
+                      </motion.span>
                     </div>
                   </CardContent>
                 </Card>
