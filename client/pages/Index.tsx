@@ -79,6 +79,38 @@ function TypingText({
   );
 }
 
+// Rotating Role Component
+function RotatingRole() {
+  const roles = [
+    "AI/ML Engineer",
+    "Web Developer",
+    "FullStack Developer",
+    "Python Dev",
+  ];
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 3000); // Change role every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <motion.span
+      key={currentRoleIndex}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.5 }}
+      className="text-cyber-blue"
+    >
+      {roles[currentRoleIndex]}
+    </motion.span>
+  );
+}
+
 // Floating Card Component
 function FloatingCard({
   children,
